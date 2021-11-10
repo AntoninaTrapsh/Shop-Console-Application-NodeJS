@@ -1,21 +1,13 @@
-const readline = require("readline");
 const {getInput} = require("./interaction");
 const fs = require("fs");
-
-const path = require('path');
-const {readFile} = require("./read-file");
-
-const dirPath = path.resolve(__dirname, 'database');
-const filePath = path.resolve(dirPath, 'products.json');
-const file = readFile(filePath);
-const content = file && JSON.parse(file) || [];
+const showCatalog = require("./show-catalog");
+const addProduct = require("./add-product");
+const rl = require("./read-line");
+const {filePath} = require("./content");
+const {dirPath} = require("./content");
+const {content} = require("./content");
 
 async function startApp() {
-    const rl = readline.createInterface({
-        input: process.stdin,
-        output: process.stdout
-    });
-
     const menu =
         "1. Вывод списка товаров" + '\n' +
         "2. Добавление нового товара" + '\n' +
@@ -36,29 +28,10 @@ async function startApp() {
         console.log('\n');
         switch (+answer) {
             case 1:
-                content.forEach((product) => console.log(product));
-                console.log('\n');
+                showCatalog();
                 break;
             case 2:
-                console.log("Введите следующие данные о товаре:");
-                answer = await getInput(rl, "Введите наименование: ");
-                newProduct.name = answer;
-                answer = await getInput(rl, "Введите цену: ");
-                newProduct.price = answer;
-                answer = await getInput(rl, "Введите путь до изображения: ");
-                newProduct.img = answer;
-                if (newProduct.name.trim() && newProduct.price.trim() && newProduct.img.trim()) {
-                    console.log("Будет добавлен следующий товар: ", newProduct);
-                    console.log('\n');
-                    content.push(newProduct);
-                } else {
-                    console.log("Товар не может иметь пустых полей. Попробуйте еще раз" + '\n');
-                    break;
-                }
-                jsonContent = JSON.stringify(content, null, 2);
-
-                fs.mkdirSync(dirPath, {recursive: true});
-                fs.writeFileSync(filePath, jsonContent);
+                await addProduct();
                 break;
             case 3:
                 answer = await getInput(rl, "Введите наименование интересующего Вас товара: " );
