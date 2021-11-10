@@ -1,6 +1,6 @@
-const rl = require("./read-line");
-const {getInput} = require("./interaction");
-const {content} = require("./content");
+const rl = require("../read&write-files/read-line");
+const {getInput} = require("../read&write-files/interaction");
+const {content} = require("../read&write-files/content");
 
 async function searchProduct() {
     let answer = await getInput(rl, "Введите наименование интересующего Вас товара: ");

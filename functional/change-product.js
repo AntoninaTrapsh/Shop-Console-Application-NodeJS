@@ -1,10 +1,10 @@
-const rl = require("./read-line");
+const rl = require("../read&write-files/read-line");
 const fs = require("fs");
 const searchProduct = require("./search-product");
-const {filePath} = require("./content");
-const {dirPath} = require("./content");
-const {getInput} = require("./interaction");
-const {content} = require("./content");
+const {filePath} = require("../read&write-files/content");
+const {dirPath} = require("../read&write-files/content");
+const {getInput} = require("../read&write-files/interaction");
+const {content} = require("../read&write-files/content");
 
 async function changeProduct() {
     let findIndex = await searchProduct();

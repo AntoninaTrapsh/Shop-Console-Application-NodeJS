@@ -1,4 +1,4 @@
-const {content} = require("./content");
+const {content} = require("../read&write-files/content");
 const arr = [];
 
 function showCatalog() {

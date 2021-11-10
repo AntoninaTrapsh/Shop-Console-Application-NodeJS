@@ -1,5 +1,5 @@
-const rl = require("./read-line");
-const {getInput} = require("./interaction");
+const rl = require("../read&write-files/read-line");
+const {getInput} = require("../read&write-files/interaction");
 
 async function startActive() {
     const menu =

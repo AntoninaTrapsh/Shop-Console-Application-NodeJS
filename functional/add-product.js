@@ -1,9 +1,9 @@
 const fs = require("fs");
-const rl = require("./read-line");
-const {filePath} = require("./content");
-const {dirPath} = require("./content");
-const {content} = require("./content");
-const {getInput} = require("./interaction");
+const rl = require("../read&write-files/read-line");
+const {filePath} = require("../read&write-files/content");
+const {dirPath} = require("../read&write-files/content");
+const {content} = require("../read&write-files/content");
+const {getInput} = require("../read&write-files/interaction");
 
 async function addProduct() {
     let newProduct = {};
