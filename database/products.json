@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Футболка",
+    "price": "900",
+    "image": "img/t-shirt.jpg"
+  },
+  {
+    "name": "Рюкзак",
+    "price": "1500",
+    "image": "img/bag.jpg"
+  },
+  {
+    "name": "Набор посуды",
+    "price": "800",
+    "image": "img/dishes.jpg"
+  },
+  {
+    "name": "Украшение",
+    "price": "500",
+    "image": "img/decorations.jpg"
+  },
+  {
+    "name": "Маска",
+    "price": "250",
+    "image": "img/mask.jpg"
+  },
+  {
+    "name": "Брелок",
+    "price": "400",
+    "image": "img/keychains.jpg"
+  },
+  {
+    "name": "Фартук",
+    "price": "700",
+    "image": "img/apron.jpg"
+  },
+  {
+    "name": "Фигурка",
+    "price": "650",
+    "image": "img/toy-figure.jpg"
+  },
+  {
+    "name": "Подушка",
+    "price": "1300",
+    "image": "img/pillow.png"
+  }
+]
