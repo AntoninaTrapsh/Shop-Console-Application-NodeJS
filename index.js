@@ -48,9 +48,14 @@ async function startApp() {
                 newProduct.price = answer;
                 answer = await getInput(rl, "Введите путь до изображения: ");
                 newProduct.img = answer;
-                console.log("Будет добавлен следующий товар: ", newProduct);
-                console.log('\n');
-                content.push(newProduct);
+                if (newProduct.name.trim() && newProduct.price.trim() && newProduct.img.trim()) {
+                    console.log("Будет добавлен следующий товар: ", newProduct);
+                    console.log('\n');
+                    content.push(newProduct);
+                } else {
+                    console.log("Товар не может иметь пустых полей. Попробуйте еще раз" + '\n');
+                    break;
+                }
                 jsonContent = JSON.stringify(content, null, 2);
 
                 fs.mkdirSync(dirPath, {recursive: true});
