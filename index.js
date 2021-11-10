@@ -78,7 +78,12 @@ async function startApp() {
             case 4:
                 answer = await getInput(rl, "Введите наименование интересующего Вас товара: " );
                 findIndex = content.findIndex((product) => product.name.toLowerCase() === answer.toLowerCase());
-                console.log('Найденный товар: ', content[findIndex]);
+                if (!content[findIndex]) {
+                    console.log("Такой товар не найден, попробуйте снова");
+                    break;
+                } else {
+                    console.log('Найденный товар: ', content[findIndex]);
+                }
                 answer = await getInput(rl, "Вы действительно хотите удалить данный товар? (1 - да, 0 - нет): ");
                 if (!answer) {
                     break;
