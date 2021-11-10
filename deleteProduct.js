@@ -12,7 +12,6 @@ async function deleteProduct() {
         return;
     }
     let answer = await getInput(rl, "Вы действительно хотите удалить данный товар? (1 - да, 0 - нет): ");
-    console.log('\n');
     if (+answer === 1) {
         content.splice(findIndex, 1);
 
@@ -21,9 +20,9 @@ async function deleteProduct() {
         fs.mkdirSync(dirPath, {recursive: true});
         fs.writeFileSync(filePath, jsonContent);
 
-        console.log("Данные о товаре удалены" + '\n');
+        console.log("Данные о товаре удалены", "\n");
     } else {
-        console.log("Данные о товаре не были удалены" + '\n');
+        console.log("Данные о товаре не были удалены","\n");
         return;
     }
 }

@@ -18,8 +18,7 @@ async function changeProduct() {
     content[findIndex].price = answer;
     answer = await getInput(rl, "Введите путь до изображения: ");
     content[findIndex].img = answer;
-    console.log("Измененный товар: ", content[findIndex]);
-    console.log('\n');
+    console.log("Измененный товар: ", content[findIndex], "\n");
     let jsonContent = JSON.stringify(content, null, 2);
 
     fs.mkdirSync(dirPath, {recursive: true});
