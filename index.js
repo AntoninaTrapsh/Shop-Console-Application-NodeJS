@@ -24,7 +24,7 @@ async function startApp() {
         "2. Добавление нового товара" + '\n' +
         "3. Изменение существующего" + '\n' +
         "4. Удаление товара" + '\n' +
-        "5. Выход"
+        "5. Выход" + '\n'
 
     let answer;
     let findIndex;
@@ -34,9 +34,11 @@ async function startApp() {
     while (isActive) {
         console.log(menu);
         answer = await getInput(rl, "Выберите действие из приведенного ниже списка: ");
+        console.log('\n');
         switch (+answer) {
             case 1:
                 content.forEach((product) => console.log(product));
+                console.log('\n');
                 break;
             case 2:
                 console.log("Введите следующие данные о товаре:");
@@ -47,6 +49,7 @@ async function startApp() {
                 answer = await getInput(rl, "Введите путь до изображения: ");
                 newProduct.img = answer;
                 console.log("Будет добавлен следующий товар: ", newProduct);
+                console.log('\n');
                 content.push(newProduct);
                 jsonContent = JSON.stringify(content, null, 2);
 
@@ -56,8 +59,8 @@ async function startApp() {
             case 3:
                 answer = await getInput(rl, "Введите наименование интересующего Вас товара: " );
                 findIndex = content.findIndex((product) => product.name.toLowerCase() === answer.toLowerCase());
-                if (!content[findIndex]) {
-                    console.log("Такой товар не найден, попробуйте снова");
+                if (findIndex === -1) {
+                    console.log("Такой товар не найден, попробуйте снова" + '\n');
                     break;
                 } else {
                     console.log('Найденный товар: ', content[findIndex]);
@@ -70,6 +73,7 @@ async function startApp() {
                 answer = await getInput(rl, "Введите путь до изображения: ");
                 content[findIndex].img = answer;
                 console.log("Измененный товар: ", content[findIndex]);
+                console.log('\n');
                 jsonContent = JSON.stringify(content, null, 2);
 
                 fs.mkdirSync(dirPath, {recursive: true});
@@ -78,16 +82,15 @@ async function startApp() {
             case 4:
                 answer = await getInput(rl, "Введите наименование интересующего Вас товара: " );
                 findIndex = content.findIndex((product) => product.name.toLowerCase() === answer.toLowerCase());
-                if (!content[findIndex]) {
-                    console.log("Такой товар не найден, попробуйте снова");
+                if (findIndex === -1) {
+                    console.log("Такой товар не найден, попробуйте снова" + '\n');
                     break;
                 } else {
                     console.log('Найденный товар: ', content[findIndex]);
                 }
                 answer = await getInput(rl, "Вы действительно хотите удалить данный товар? (1 - да, 0 - нет): ");
-                if (!answer) {
-                    break;
-                } else {
+                console.log('\n');
+                if (+answer) {
                     content.splice(findIndex, 1);
 
                     jsonContent = JSON.stringify(content, null, 2);
@@ -95,7 +98,10 @@ async function startApp() {
                     fs.mkdirSync(dirPath, {recursive: true});
                     fs.writeFileSync(filePath, jsonContent);
 
-                    console.log("Данные о товаре удалены");
+                    console.log("Данные о товаре удалены" + '\n');
+                } else {
+                    console.log("Данные о товаре не были удалены" + '\n');
+                    break;
                 }
                 break;
             case 5:
