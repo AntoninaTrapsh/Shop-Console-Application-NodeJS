@@ -1,14 +1,9 @@
-const {getInput} = require("./read&write-files/interaction");
-const fs = require("fs");
 const showCatalog = require("./functional/show-catalog");
 const addProduct = require("./functional/add-product");
 const changeProduct = require("./functional/change-product");
 const rl = require("./read&write-files/read-line");
 const deleteProduct = require("./functional/deleteProduct");
 const startActive = require("./functional/start-active");
-const {filePath} = require("./read&write-files/content");
-const {dirPath} = require("./read&write-files/content");
-const {content} = require("./read&write-files/content");
 
 
 async function startApp() {
