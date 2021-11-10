@@ -1,17 +1,14 @@
-const fs = require('fs');
+const readline = require("readline");
+const {getInput} = require("./interaction");
+const fs = require("fs");
+
 const path = require('path');
+const {readFile} = require("./read-file");
 
 const dirPath = path.resolve(__dirname, 'database');
 const filePath = path.resolve(dirPath, 'products.json');
 const file = readFile(filePath);
 const content = file && JSON.parse(file) || [];
-
-const readline = require("readline");
-let isActive = true;
-
-let jsonContent;
-
-startApp();
 
 async function startApp() {
     const rl = readline.createInterface({
@@ -24,8 +21,10 @@ async function startApp() {
         "2. Добавление нового товара" + '\n' +
         "3. Изменение существующего" + '\n' +
         "4. Удаление товара" + '\n' +
-        "5. Выход" + '\n'
+        "5. Выход" + '\n';
 
+    let isActive = true;
+    let jsonContent;
     let answer;
     let findIndex;
 
@@ -120,15 +119,4 @@ async function startApp() {
     rl.close();
 }
 
-function getInput(rl, text = "- ") {
-    return new Promise(resolve => {
-        rl.question(text, answer => resolve(answer));
-    })
-}
-
-function readFile(filePath) {
-    if (fs.existsSync(filePath)) {
-        return fs.readFileSync(filePath);
-    }
-}
-
+startApp();
