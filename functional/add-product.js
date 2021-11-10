@@ -1,11 +1,12 @@
 const fs = require("fs");
 const rl = require("../read&write-files/read-line");
+const {readContent} = require("../read&write-files/content");
 const {filePath} = require("../read&write-files/content");
 const {dirPath} = require("../read&write-files/content");
-const {content} = require("../read&write-files/content");
 const {getInput} = require("../read&write-files/interaction");
 
 async function addProduct() {
+    let content = readContent();
     let newProduct = {};
     console.log("Введите следующие данные о товаре:");
     let answer = await getInput(rl, "Введите наименование: ");

@@ -1,12 +1,13 @@
 const rl = require("../read&write-files/read-line");
 const fs = require("fs");
 const searchProduct = require("./search-product");
+const {readContent} = require("../read&write-files/content");
 const {filePath} = require("../read&write-files/content");
 const {dirPath} = require("../read&write-files/content");
 const {getInput} = require("../read&write-files/interaction");
-const {content} = require("../read&write-files/content");
 
 async function changeProduct() {
+    let content = readContent();
     let findIndex = await searchProduct();
     if (findIndex === false) {
         return;

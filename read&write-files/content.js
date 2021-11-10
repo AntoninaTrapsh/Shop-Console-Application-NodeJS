@@ -3,7 +3,10 @@ const {readFile} = require("./read-file");
 
 const dirPath = path.resolve(__dirname, '../database');
 const filePath = path.resolve(dirPath, 'products.json');
-const file = readFile(filePath);
-const content = file && JSON.parse(file) || [];
 
-module.exports = {dirPath, filePath, content};
+function readContent() {
+    let files = readFile(filePath);
+    return file && JSON.parse(files) || [];
+}
+
+module.exports = {dirPath, filePath, content, readContent};
