@@ -5,12 +5,10 @@ const {dirPath} = require("./content");
 const {content} = require("./content");
 const {getInput} = require("./interaction");
 
-let answer;
-let newProduct = {};
-
 async function addProduct() {
+    let newProduct = {};
     console.log("Введите следующие данные о товаре:");
-    answer = await getInput(rl, "Введите наименование: ");
+    let answer = await getInput(rl, "Введите наименование: ");
     newProduct.name = answer;
     answer = await getInput(rl, "Введите цену: ");
     newProduct.price = answer;
