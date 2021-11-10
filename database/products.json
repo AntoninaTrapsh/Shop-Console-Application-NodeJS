@@ -43,5 +43,20 @@
     "name": "Подушка",
     "price": "1300",
     "image": "img/pillow.png"
+  },
+  {
+    "name": "dfsdf",
+    "price": "3423",
+    "img": "2"
+  },
+  {
+    "name": "dfsdf",
+    "price": "3423",
+    "img": "2"
+  },
+  {
+    "name": "fsfsafdsf",
+    "price": "243",
+    "img": "3"
   }
 ]

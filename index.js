@@ -95,7 +95,7 @@ async function startApp() {
                 }
                 answer = await getInput(rl, "Вы действительно хотите удалить данный товар? (1 - да, 0 - нет): ");
                 console.log('\n');
-                if (+answer) {
+                if (+answer === 1) {
                     content.splice(findIndex, 1);
 
                     jsonContent = JSON.stringify(content, null, 2);
