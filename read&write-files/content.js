@@ -6,7 +6,7 @@ const filePath = path.resolve(dirPath, 'products.json');
 
 function readContent() {
     let files = readFile(filePath);
-    return file && JSON.parse(files) || [];
+    return files && JSON.parse(files) || [];
 }
 
-module.exports = {dirPath, filePath, content, readContent};
+module.exports = {dirPath, filePath, readContent};
