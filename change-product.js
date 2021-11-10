@@ -32,4 +32,4 @@ async function changeProduct() {
     fs.writeFileSync(filePath, jsonContent);
 }
 
-module.exports = changeProduct();
+module.exports = changeProduct;
