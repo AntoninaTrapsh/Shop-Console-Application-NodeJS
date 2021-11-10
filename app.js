@@ -2,10 +2,12 @@ const {getInput} = require("./interaction");
 const fs = require("fs");
 const showCatalog = require("./show-catalog");
 const addProduct = require("./add-product");
+const changeProduct = require("./change-product");
 const rl = require("./read-line");
 const {filePath} = require("./content");
 const {dirPath} = require("./content");
 const {content} = require("./content");
+
 
 async function startApp() {
     const menu =
@@ -34,27 +36,7 @@ async function startApp() {
                 await addProduct();
                 break;
             case 3:
-                answer = await getInput(rl, "Введите наименование интересующего Вас товара: " );
-                findIndex = content.findIndex((product) => product.name.toLowerCase() === answer.toLowerCase());
-                if (findIndex === -1) {
-                    console.log("Такой товар не найден, попробуйте снова" + '\n');
-                    break;
-                } else {
-                    console.log('Найденный товар: ', content[findIndex]);
-                }
-                console.log("Введите следующие данные о товаре: ");
-                answer = await getInput(rl, "Введите наименование: ");
-                content[findIndex].name = answer;
-                answer = await getInput(rl, "Введите цену: ");
-                content[findIndex].price = answer;
-                answer = await getInput(rl, "Введите путь до изображения: ");
-                content[findIndex].img = answer;
-                console.log("Измененный товар: ", content[findIndex]);
-                console.log('\n');
-                jsonContent = JSON.stringify(content, null, 2);
-
-                fs.mkdirSync(dirPath, {recursive: true});
-                fs.writeFileSync(filePath, jsonContent);
+                await changeProduct();
                 break;
             case 4:
                 answer = await getInput(rl, "Введите наименование интересующего Вас товара: " );
